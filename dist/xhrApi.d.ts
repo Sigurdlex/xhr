@@ -13,8 +13,12 @@ export declare class XhrApi implements IXHRApi {
     static defaultOptions: CoreOptions;
     requestOptions: CoreOptions;
     private allowUntrustedCertificate;
+    /**
+     * @internal
+     */
+    private stream;
     private proxyConfig;
-    readonly apiName: string;
+    get apiName(): string;
     /**
      * Creates an instance of XhrApi optionally passing options for request
      * @memberof XhrApi
@@ -67,6 +71,8 @@ export declare class XhrApi implements IXHRApi {
      * @memberof XhrApi
      */
     setAuthProvider(authProvider: IProvider): void;
+    /**@internal */
+    private authProvider;
     xhr(xhroptions: IXHROptions, progressDelegate?: (progressData: IXHRProgress) => void): Promise<XMLHttpRequest>;
     xhrStream(xhroptions: IXHROptions, progressDelegate: (progressData: IXHRProgress) => void): Promise<XMLHttpRequest>;
     disconnect(): void;
